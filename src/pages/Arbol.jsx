@@ -15,13 +15,13 @@ const ARBOL = [
                 nombre: "Layout",
                 archivo: "src/components/Layout.jsx",
                 tipo: "Layout",
-                nota: "Esqueleto compartido por todas las rutas anidadas. Guarda el estado del menú móvil (menuAbierto) y lo baja por props al Sidebar, al Header y al backdrop.",
+                nota: "Esqueleto compartido por todas las rutas anidadas. Guarda el estado del menú móvil (menuAbierto) y lo baja por props al Sidebar, al Header y al backdrop. Con useLocation + useLayoutEffect restaura el scroll a top: 0 (window, .app-main y .sidebar) en cada cambio de ruta.",
                 hijos: [
                   {
                     nombre: "Sidebar",
                     archivo: "src/components/Sidebar.jsx",
                     tipo: "Componente UI",
-                    nota: "Panel lateral fijo (sticky, 100vh) con identidad 'Nodos · Front End' y 5 NavLink con clase .active. Recibe abierto/onNavigate del Layout; en móvil se desliza desde la izquierda (clase .open).",
+                    nota: "Panel lateral fijo (sticky, 100vh) con el isotipo SVG minimalista (glifo N verde fósforo sobre carbón, compartido con favicon.svg), la identidad 'Nodos · Front End Team' y 5 NavLink con clase .active. Recibe abierto/onNavigate del Layout; en móvil se desliza desde la izquierda (clase .open).",
                     hijos: [],
                   },
                   {
@@ -60,7 +60,7 @@ const ARBOL = [
                             nombre: "NodeGraph",
                             archivo: "src/components/NodeGraph.jsx",
                             tipo: "Componente UI",
-                            nota: "Grafo SVG interactivo con tooltip y navegación por teclado.",
+                            nota: "Grafo SVG interactivo: hub con halo pulsante, tooltip, nodos navegables con teclado y barra de estado que emite un log tipo ping al inspeccionar un nodo (sus aristas se iluminan en verde fósforo).",
                             hijos: [],
                           },
                           {
@@ -73,7 +73,7 @@ const ARBOL = [
                                 nombre: "TeamCard ×5",
                                 archivo: "src/components/TeamCard.jsx",
                                 tipo: "Componente UI",
-                                nota: "Recibe member por props y enlaza a /perfil/:id.",
+                                nota: "Recibe member por props y enlaza a /perfil/:id. Pinta el avatar como <pre> de arte ASCII nativo (asciiArt del objeto, role='img'), sin imágenes externas.",
                                 hijos: [],
                               },
                             ],
@@ -84,7 +84,7 @@ const ARBOL = [
                         nombre: "Profile",
                         archivo: "src/pages/Profile.jsx",
                         tipo: "Página",
-                        nota: "Ruta /perfil/:id; resuelve el integrante con useParams + TEAM.find.",
+                        nota: "Ruta /perfil/:id; resuelve el integrante con useParams + TEAM.find y pinta su asciiArt en un <pre class='avatar-ascii-lg'>.",
                         hijos: [
                           {
                             nombre: "SkillBar",
@@ -261,7 +261,7 @@ export default function Arbol() {
       <section className="section">
         <div className="container">
           <div className="section-head">
-            <span className="eyebrow">Arquitectura</span>
+            <span className="eyebrow">./view-arbol</span>
             <h2>Árbol de renderizado</h2>
             <p>
               Esquema del árbol de componentes de la aplicación tal como está

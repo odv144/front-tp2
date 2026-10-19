@@ -8,7 +8,7 @@ export default function Home() {
       <section className="hero">
         <div className="container hero-grid">
           <div>
-            <span className="eyebrow">TP2 · Proyecto React en equipo</span>
+            <span className="eyebrow">./tp2-react-equipo</span>
             <h1 className="hero-title">
               Somos <span className="accent-word">Nodos</span>:
               <br />
@@ -29,19 +29,14 @@ export default function Home() {
             </div>
           </div>
 
-          <div>
-            <NodeGraph />
-            <p className="graph-hint">
-              ↳ pasá el mouse o navegá con Tab por los nodos
-            </p>
-          </div>
+          <NodeGraph />
         </div>
       </section>
 
       <section className="section" id="equipo">
         <div className="container">
           <div className="section-head">
-            <span className="eyebrow">El equipo</span>
+            <span className="eyebrow">ls -la /equipo</span>
             <h2>Cinco perfiles, un solo repositorio.</h2>
             <p>
               Cada tarjeta se genera dinámicamente desde un mismo array de datos: así

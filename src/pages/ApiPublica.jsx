@@ -66,7 +66,7 @@ export default function ApiPublica() {
       <section className="section">
         <div className="container">
           <div className="section-head">
-            <span className="eyebrow">API Externa</span>
+            <span className="eyebrow">curl /api-publica</span>
             <h2>Obras de JavaScript desde Open Library</h2>
             <p>
               Esta vista consume una API pública desde el navegador para mostrar

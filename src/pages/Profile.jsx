@@ -47,16 +47,20 @@ export default function Profile() {
         ← Volver al equipo
       </Link>
 
+      <p className="eyebrow">whoami</p>
+
       <div className="profile-hero">
-        <div
-          className="avatar-lg"
-          style={{ background: member.accent }}
+        <pre
+          className="avatar-ascii avatar-ascii-lg"
+          role="img"
+          aria-label={`Avatar ASCII de ${member.name}`}
         >
-          {member.initials}
-        </div>
+          {member.asciiArt}
+        </pre>
         <div>
           <h1 className="profile-name">{member.name}</h1>
           <p className="profile-role">{member.role}</p>
+          <span className="sys-tag">{member.sysTag}</span>
           <div className="profile-meta">
             <span>📍 {member.city}</span>
             <span>🎂 {member.age} años</span>

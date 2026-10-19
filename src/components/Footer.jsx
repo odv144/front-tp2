@@ -11,8 +11,8 @@ export default function Footer() {
           width: "100%",
         }}
       >
-        <span>Equipo Nodos · TP2 Front End · 2026</span>
-        <span>Hecho con React + Vite</span>
+        <span>$ echo &quot;Equipo Nodos · TP2 Front End · 2026&quot;</span>
+        <span>exit 0 · React + Vite</span>
       </div>
     </footer>
   );

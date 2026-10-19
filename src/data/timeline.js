@@ -1,8 +1,3 @@
-/**
- * Fuente única de verdad de la bitácora del equipo.
- * Timeline.jsx solo renderiza este array.
- */
-
 export const TIMELINE = [
   {
     date: "Semana 1 · Organización",
@@ -69,5 +64,24 @@ export const TIMELINE = [
     title: "Integración de API pública y documentación del árbol de renderizado",
     body: "La primera versión de esta vista consumía REST Countries, pero la petición fallaba de forma repetida desde el navegador. Lo registramos como problema y lo solucionamos reemplazando el endpoint por Open Library (Internet Archive), que tiene CORS libre, no requiere claves en el cliente y aporta datos pertinentes a la carrera: obras sobre desarrollo web y JavaScript con título, autor, año y portada. Se mantiene el control explícito de los estados de carga, error y éxito (con reintento manual) y el bloque visible en la interfaz que explica qué datos aporta la API. En paralelo modelamos el Virtual DOM de la aplicación en una vista de árbol de renderizado, alineando la arquitectura real (Layout con Header y Sidebar compartida, componentes de tarjeta y de entrada extraídos) con el esquema documentado.",
     tags: ["Integración", "Decisión"],
+  },
+  {
+    date: "Semana 7 · Identidad (TP2)",
+    title: "Rediseño de identidad de marca: isotipo pixel-art, favicon y avatares parametrizados",
+    body: "Reemplazamos la caja genérica con la letra N por un isotipo SVG pixel-art: un chip de 16x16 con un glifo N en verde fósforo, pines en cian y un LED ámbar, dibujado a mano con rects de 1px y shape-rendering crispEdges. El mismo archivo vive en public/favicon.svg para la pestaña del navegador, se renderiza en el Sidebar y el título base pasó a ser 'Nodos · Terminal Dev Team (TP2)'. En paralelo ajustamos los avatares de DiceBear pixel-art con parámetros explícitos: piel clara en los cinco, pelo corto (short01-short08) en los varones y pelo largo (long) en las mujeres, con barba, lentes, gorros y accesorios desactivados para que ninguna cara quede tapada ni inconsistente. Verificamos los cinco endpoints con HTTP 200 y comprobamos en el SVG que cada uno dibuja un color del palette de pelo.",
+    tags: ["Cambio"],
+  },
+  {
+    date: "Semana 7 · UX (TP2)",
+    title: "Scroll Restoration global: cada ruta arranca en top: 0",
+    body: "Al navegar desde la Sidebar o desde botones internos, la vista quedaba posicionada en el medio o al final de la página anterior porque el Layout (y con él el scroll del documento) se mantiene vivo entre rutas. Lo resolvimos dentro del Layout con useLocation y useLayoutEffect: en cada cambio de pathname ejecutamos window.scrollTo(0, 0) antes del repintado y además reseteamos el scroll de los contenedores con overflow propio (.app-main y .sidebar), de modo que toda transición de ruta arranca siempre exactamente arriba de todo.",
+    tags: ["Problema", "Cambio"],
+  },
+  {
+    date: "Semana 8 · Decisión (TP2)",
+    title:
+      "Evolución de identidad a Arte ASCII nativo, saneamiento de código y optimización de UX",
+    body: "Reemplazo de dependencias externas de avatares por arte ASCII puro embebido, unificación de favicon minimalista y restauración global de scroll.",
+    tags: ["Decisión", "Diseño"],
   },
 ];

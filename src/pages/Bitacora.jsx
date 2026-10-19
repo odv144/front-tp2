@@ -6,7 +6,7 @@ export default function Bitacora() {
       <section className="section">
         <div className="container">
           <div className="section-head">
-            <span className="eyebrow">Proceso</span>
+            <span className="eyebrow">tail -f /bitacora.log</span>
             <h2>Bitácora de desarrollo</h2>
             <p>
               Decisiones, obstáculos y cambios de rumbo del equipo, en orden

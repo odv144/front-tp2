@@ -34,7 +34,7 @@ export default function Recursos() {
       <section className="section">
         <div className="container">
           <div className="section-head">
-            <span className="eyebrow">Recursos</span>
+            <span className="eyebrow">cat /recursos</span>
             <h2>Stack y herramientas del equipo</h2>
             <p>
               {recursos.length} recursos del ecosistema frontend, estilos, testing

@@ -2,6 +2,7 @@ function tagClass(tag) {
   if (tag === "Problema") return "timeline-tag problema";
   if (tag === "Cambio") return "timeline-tag cambio";
   if (tag === "Integración") return "timeline-tag integracion";
+  if (tag === "Diseño") return "timeline-tag diseno";
   return "timeline-tag decision";
 }
 
