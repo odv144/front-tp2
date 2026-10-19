@@ -27,7 +27,7 @@ export default function NodeGraph() {
     []
   );
 
-  const showTip = (p, evt) => {
+  const showTip = (p) => {
     setActiveId(p.member.id);
     if (!wrapRef.current) return;
     const wrapRect = wrapRef.current.getBoundingClientRect();

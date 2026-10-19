@@ -40,6 +40,7 @@ h1, h2, h3, h4, p { margin: 0; }
   --shadow-strong: 0 12px 32px rgba(20, 22, 31, 0.14);
   --max-width: 1200px;
   --transition: 180ms ease;
+  --header-h: 73px;
 }
 
 [data-theme="dark"] {
@@ -148,23 +149,6 @@ h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.01em; }
   font-family: var(--font-mono);
   font-size: 0.8rem;
 }
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-.nav-links a {
-  padding: 8px 14px;
-  border-radius: var(--radius-sm);
-  font-size: 0.92rem;
-  color: var(--text-muted);
-  transition: background var(--transition), color var(--transition);
-}
-.nav-links a:hover,
-.nav-links a.active {
-  background: var(--primary-soft);
-  color: var(--primary);
-}
 .nav-actions { display: flex; align-items: center; gap: 10px; }
 
 .theme-toggle {
@@ -179,15 +163,6 @@ h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.01em; }
   transition: transform var(--transition), background var(--transition);
 }
 .theme-toggle:hover { transform: rotate(18deg); }
-
-.nav-toggle-mobile {
-  display: none;
-  width: 40px; height: 40px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  background: var(--surface);
-  font-size: 1.2rem;
-}
 
 /* ---------- 4. HERO / PORTADA ---------- */
 .hero {
@@ -487,6 +462,129 @@ h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.01em; }
   color: var(--text-muted);
 }
 
+/* ---------- 10. LAYOUT (SIDEBAR + CONTENIDO) ---------- */
+.app-layout {
+  display: grid;
+  grid-template-columns: 264px minmax(0, 1fr);
+  max-width: var(--max-width);
+  min-height: calc(100vh - var(--header-h));
+  margin: 0 auto;
+}
+
+.app-main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.app-main > main { flex: 1 0 auto; }
+
+.sidebar {
+  position: sticky;
+  top: var(--header-h);
+  align-self: start;
+  min-height: calc(100vh - var(--header-h));
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  padding: 24px 18px;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.sidebar-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+}
+.sidebar-subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.sidebar-nav a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.94rem;
+  color: var(--text-muted);
+  transition: background var(--transition), color var(--transition);
+}
+.sidebar-nav a::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--border);
+  transition: background var(--transition), transform var(--transition);
+}
+.sidebar-nav a:hover {
+  background: var(--surface-alt);
+  color: var(--text);
+}
+.sidebar-nav a.active {
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-weight: 600;
+}
+.sidebar-nav a.active::before {
+  background: var(--accent);
+  transform: scale(1.4);
+}
+
+.mobile-toggle {
+  display: none;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  margin-left: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  font-size: 1.2rem;
+}
+
+/* ---------- 11. 404 / PLACEHOLDERS ---------- */
+.notfound {
+  padding: 72px 0 90px;
+  text-align: center;
+}
+.notfound-title {
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  margin: 16px 0 14px;
+}
+.notfound-text {
+  color: var(--text-muted);
+  max-width: 52ch;
+  margin: 0 auto 28px;
+}
+
+.stub-card { max-width: 64ch; }
+.stub-text { color: var(--text-muted); }
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1px 6px;
+}
+
 /* =========================================================
    BREAKPOINTS: 1200px / 900px / 400px
    ========================================================= */
@@ -498,19 +596,6 @@ h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.01em; }
 }
 
 @media (max-width: 900px) {
-  .nav-links { display: none; }
-  .nav-links.is-open {
-    display: flex;
-    position: absolute;
-    top: 100%; left: 0; right: 0;
-    flex-direction: column;
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    padding: 10px 20px 16px;
-    gap: 2px;
-  }
-  .nav-toggle-mobile { display: grid; place-items: center; }
-
   .hero-grid { grid-template-columns: 1fr; }
   .graph-wrap { max-width: 340px; }
 
@@ -522,9 +607,47 @@ h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.01em; }
   .site-footer { flex-direction: column; text-align: center; }
 }
 
+@media (max-width: 767px) {
+  .app-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+
+  .sidebar {
+    position: relative;
+    top: auto;
+    min-height: 0;
+    gap: 0;
+    padding: 10px 16px;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    z-index: 40;
+  }
+  .sidebar.open { z-index: 60; }
+
+  .mobile-toggle { display: grid; }
+
+  .sidebar-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 10px 16px 16px;
+    gap: 2px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow-strong);
+  }
+  .sidebar.open .sidebar-nav { display: flex; }
+  .sidebar-nav a { padding: 12px 14px; }
+}
+
 @media (max-width: 400px) {
+  :root { --header-h: 65px; }
   .container { padding: 0 14px; }
   .nav { padding: 12px 14px; }
+  .sidebar { padding: 8px 14px; }
   .brand span.brand-text { display: none; }
   .hero { padding: 36px 0 24px; }
   .hero-actions { flex-direction: column; align-items: stretch; }
