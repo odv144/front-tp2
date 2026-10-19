@@ -1,17 +1,13 @@
 import { useState, useEffect } from "react";
 
-/**
- * Hook para manejar tema claro/oscuro.
- * Respeta prefers-color-scheme y persiste en localStorage.
- */
 export function useTheme() {
   const [theme, setTheme] = useState(() => {
-    if (typeof window === "undefined") return "light";
+    if (typeof window === "undefined") return "dark";
     const saved = localStorage.getItem("theme");
     if (saved) return saved;
-    return window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light";
+    return window.matchMedia("(prefers-color-scheme: light)").matches
+      ? "light"
+      : "dark";
   });
 
   useEffect(() => {

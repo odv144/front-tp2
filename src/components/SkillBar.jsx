@@ -4,7 +4,6 @@ export default function SkillBar({ name, level }) {
   const [width, setWidth] = useState(0);
 
   useEffect(() => {
-    // Pequeño delay para que se vea la animación
     const id = requestAnimationFrame(() => {
       setWidth(level);
     });

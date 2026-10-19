@@ -1,0 +1,234 @@
+[
+  {
+    "id": 1,
+    "nombre": "React",
+    "categoria": "Frontend",
+    "descripcion": "Librería de interfaces basada en componentes y estado, base de este sitio (SPA con Vite).",
+    "url": "https://react.dev",
+    "nivelUso": "Diario"
+  },
+  {
+    "id": 2,
+    "nombre": "React Router",
+    "categoria": "Frontend",
+    "descripcion": "Enrutamiento declarativo con rutas anidadas, parámetros dinámicos y navegación sin recargar.",
+    "url": "https://reactrouter.com",
+    "nivelUso": "Diario"
+  },
+  {
+    "id": 3,
+    "nombre": "Vue.js",
+    "categoria": "Frontend",
+    "descripcion": "Framework progresivo con templates y reactividad, que venimos evaluando como alternativa.",
+    "url": "https://vuejs.org",
+    "nivelUso": "Exploración"
+  },
+  {
+    "id": 4,
+    "nombre": "Next.js",
+    "categoria": "Frontend",
+    "descripcion": "Framework de React con renderizado en servidor y routing por archivos.",
+    "url": "https://nextjs.org",
+    "nivelUso": "Exploración"
+  },
+  {
+    "id": 5,
+    "nombre": "Svelte",
+    "categoria": "Frontend",
+    "descripcion": "Compilador de componentes que resuelve la reactividad en tiempo de compilación.",
+    "url": "https://svelte.dev",
+    "nivelUso": "Exploración"
+  },
+  {
+    "id": 6,
+    "nombre": "Astro",
+    "categoria": "Frontend",
+    "descripcion": "Framework orientado a sitios de contenido con islas de interactividad.",
+    "url": "https://astro.build",
+    "nivelUso": "Exploración"
+  },
+  {
+    "id": 7,
+    "nombre": "Tailwind CSS",
+    "categoria": "Estilos",
+    "descripcion": "Utilidades atómicas aplicadas directamente en el marcado, muy usada en el ecosistema moderno.",
+    "url": "https://tailwindcss.com",
+    "nivelUso": "Ocasional"
+  },
+  {
+    "id": 8,
+    "nombre": "Sass",
+    "categoria": "Estilos",
+    "descripcion": "Preprocesador de CSS con variables, anidamiento y mixins para hojas de estilo más ordenadas.",
+    "url": "https://sass-lang.com",
+    "nivelUso": "Ocasional"
+  },
+  {
+    "id": 9,
+    "nombre": "CSS Modules",
+    "categoria": "Estilos",
+    "descripcion": "Clases con ámbito local por archivo para evitar colisiones de nombres sin perder CSS puro.",
+    "url": "https://cssmodules.dev",
+    "nivelUso": "Diario"
+  },
+  {
+    "id": 10,
+    "nombre": "Styled Components",
+    "categoria": "Estilos",
+    "descripcion": "CSS-in-JS con estilos definidos dentro del componente de React.",
+    "url": "https://styled-components.com",
+    "nivelUso": "Exploración"
+  },
+  {
+    "id": 11,
+    "nombre": "Vite",
+    "categoria": "Herramientas",
+    "descripcion": "Bundler y dev server con arranque instantáneo por ESM; encarga el build de producción.",
+    "url": "https://vite.dev",
+    "nivelUso": "Diario"
+  },
+  {
+    "id": 12,
+    "nombre": "Figma",
+    "categoria": "Herramientas",
+    "descripcion": "Diseño colaborativo y prototipado de la interfaz antes de llevarla a código.",
+    "url": "https://www.figma.com",
+    "nivelUso": "Ocasional"
+  },
+  {
+    "id": 13,
+    "nombre": "npm",
+    "categoria": "Herramientas",
+    "descripcion": "Gestor de dependencias y scripts del proyecto (install, run, build, lint).",
+    "url": "https://www.npmjs.com",
+    "nivelUso": "Diario"
+  },
+  {
+    "id": 14,
+    "nombre": "Git",
+    "categoria": "Herramientas",
+    "descripcion": "Control de versiones con una rama por integrante integrada en la rama de desarrollo.",
+    "url": "https://git-scm.com",
+    "nivelUso": "Diario"
+  },
+  {
+    "id": 15,
+    "nombre": "Storybook",
+    "categoria": "Herramientas",
+    "descripcion": "Aislamiento y documentación de componentes en un catálogo interactivo.",
+    "url": "https://storybook.js.org",
+    "nivelUso": "Exploración"
+  },
+  {
+    "id": 16,
+    "nombre": "ESLint",
+    "categoria": "Linter",
+    "descripcion": "Analizador estático de JavaScript y JSX con reglas de calidad y detección de errores.",
+    "url": "https://eslint.org",
+    "nivelUso": "Diario"
+  },
+  {
+    "id": 17,
+    "nombre": "oxlint",
+    "categoria": "Linter",
+    "descripcion": "Linter ultrarrápido escrito en Rust; es el que ejecuta npm run lint en este repo.",
+    "url": "https://www.npmjs.com/package/oxlint",
+    "nivelUso": "Diario"
+  },
+  {
+    "id": 18,
+    "nombre": "Prettier",
+    "categoria": "Linter",
+    "descripcion": "Formateador de código con reglas de estilo unificadas para todo el equipo.",
+    "url": "https://prettier.io",
+    "nivelUso": "Ocasional"
+  },
+  {
+    "id": 19,
+    "nombre": "Stylelint",
+    "categoria": "Linter",
+    "descripcion": "Linter de CSS y SCSS para detectar errores y patrones inconsistentes en los estilos.",
+    "url": "https://stylelint.io",
+    "nivelUso": "Exploración"
+  },
+  {
+    "id": 20,
+    "nombre": "Vitest",
+    "categoria": "Testing",
+    "descripcion": "Corredor de tests nativo de Vite con API compatible con Jest.",
+    "url": "https://vitest.dev",
+    "nivelUso": "Ocasional"
+  },
+  {
+    "id": 21,
+    "nombre": "Cypress",
+    "categoria": "Testing",
+    "descripcion": "Tests end-to-end en el navegador con ejecución en tiempo real.",
+    "url": "https://www.cypress.io",
+    "nivelUso": "Ocasional"
+  },
+  {
+    "id": 22,
+    "nombre": "Jest",
+    "categoria": "Testing",
+    "descripcion": "Framework de tests con mocks, aserciones y reportes de cobertura para JavaScript.",
+    "url": "https://jestjs.io",
+    "nivelUso": "Exploración"
+  },
+  {
+    "id": 23,
+    "nombre": "Testing Library",
+    "categoria": "Testing",
+    "descripcion": "Utilidades para testear componentes desde la perspectiva de quien usa la interfaz.",
+    "url": "https://testing-library.com",
+    "nivelUso": "Exploración"
+  },
+  {
+    "id": 24,
+    "nombre": "Vercel",
+    "categoria": "DevOps",
+    "descripcion": "Despliegue continuo de la SPA con rewrites para que las rutas resistan el F5.",
+    "url": "https://vercel.com",
+    "nivelUso": "Diario"
+  },
+  {
+    "id": 25,
+    "nombre": "Docker",
+    "categoria": "DevOps",
+    "descripcion": "Contenedores para reproducir el entorno de desarrollo y de integración continua.",
+    "url": "https://www.docker.com",
+    "nivelUso": "Exploración"
+  },
+  {
+    "id": 26,
+    "nombre": "GitHub Actions",
+    "categoria": "DevOps",
+    "descripcion": "CI/CD dentro del repositorio: lint y build automáticos en cada push.",
+    "url": "https://github.com/features/actions",
+    "nivelUso": "Ocasional"
+  },
+  {
+    "id": 27,
+    "nombre": "Node.js",
+    "categoria": "Backend",
+    "descripcion": "Runtime de JavaScript del lado del servidor con el que corren Vite y npm.",
+    "url": "https://nodejs.org",
+    "nivelUso": "Diario"
+  },
+  {
+    "id": 28,
+    "nombre": "Express",
+    "categoria": "Backend",
+    "descripcion": "Framework HTTP minimalista para exponer APIs REST de prueba.",
+    "url": "https://expressjs.com",
+    "nivelUso": "Exploración"
+  },
+  {
+    "id": 29,
+    "nombre": "MongoDB",
+    "categoria": "Backend",
+    "descripcion": "Base de datos documental que usamos para prototipar el guardado de datos.",
+    "url": "https://www.mongodb.com",
+    "nivelUso": "Exploración"
+  }
+]

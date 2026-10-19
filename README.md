@@ -1,92 +1,95 @@
-# Equipo Nodos — TP1 (versión React)
+# Equipo Nodos · TP2 React
 
-Migración a **Vite + React** del sitio original en HTML/CSS/JS vanilla.
+Desarrollo de Sistemas Web · Front End · IFTS 29 · 2026
 
-🔗 Sitio original: [https://front-tp1.vercel.app/](https://front-tp1.vercel.app/)  
-📁 Repo original: [https://github.com/odv144/front-tp1](https://github.com/odv144/front-tp1)
+**[Repositorio en GitHub](https://github.com/odv144/front-tp2)** · **[Deploy en Vercel](https://front-tp2.vercel.app/)**
 
-## Stack
+---
 
-- **Vite** + **React 19**
-- **React Router DOM** (rutas: `/`, `/perfil/:id`, `/bitacora`)
-- **CSS vanilla** (mismas variables de diseño, tema claro/oscuro y breakpoints)
-- JavaScript puro (sin TypeScript)
+## Índice de Contenidos
 
-## Estructura
+1. [Propuesta y Arquitectura de la Aplicación](#propuesta-y-arquitectura-de-la-aplicación)
+2. [Equipo y Responsabilidades en el TP2 (Criterio 3)](#equipo-y-responsabilidades-en-el-tp2-criterio-3)
+3. [Avatares y Arte ASCII Nativo](#avatares-y-arte-ascii-nativo)
+4. [Declaración de Uso de Asistencia con Inteligencia Artificial (Criterio 15)](#declaración-de-uso-de-asistencia-con-inteligencia-artificial-criterio-15)
+5. [Instalación y Ejecución Local](#instalación-y-ejecución-local)
 
-```
-src/
-├── components/
-│   ├── Header.jsx          # Nav + tema + menú móvil
-│   ├── Footer.jsx
-│   ├── NodeGraph.jsx       # Grafo SVG interactivo
-│   ├── TeamCard.jsx
-│   ├── TeamGrid.jsx
-│   ├── SkillBar.jsx        # Barras de habilidad animadas
-│   ├── FunFactButton.jsx
-│   └── Timeline.jsx
-├── data/
-│   └── team.js             # Array TEAM (única fuente de verdad)
-├── hooks/
-│   └── useTheme.js         # Tema claro/oscuro + localStorage
-├── pages/
-│   ├── Home.jsx
-│   ├── Profile.jsx
-│   └── Bitacora.jsx
-├── styles/
-│   └── index.css
-├── App.jsx
-└── main.jsx
-```
+---
 
-## Cómo correrlo
+## Propuesta y Arquitectura de la Aplicación
+
+### Identidad visual
+
+La interfaz adopta una estética **retro inspirada en terminales UNIX/Linux**: tema **oscuro por defecto** (consola de carbón `#0b0f12`), tipografía monoespaciada para títulos y etiquetas de sistema, y acentos de **fósforo verde** (`#00ff66`) y **ámbar** (`#ffb000`). Los encabezados de cada módulo se presentan como comandos de consola (`ls -la /equipo`, `cat /recursos`, `tail -f /bitacora.log`) con cursor titilante, y el tema claro ofrece una variante de papel retro persistida en `localStorage`. Todo el sistema se apoya en tokens CSS (`--bg`, `--surface`, `--primary`, `--accent`, radios 3–6 px y sombras pixeladas de 2 px).
+
+### Módulos y rutas
+
+| # | Ruta | Módulo | Descripción |
+| :--- | :--- | :--- | :--- |
+| 1 | `/` (Inicio) | Hero + `NodeGraph` + `TeamGrid` | Presentación del equipo, grafo SVG interactivo con aristas reactivas, halo pulsante y telemetría tipo `ping` al inspeccionar nodos, más la cuadrícula de integrantes. |
+| 2 | `/perfil/:id` | `Profile` | Vista dinámica de cada miembro: bio, datos, barras de habilidades segmentadas (`SkillBar`) y microinteracción de dato curioso rotativo (`FunFactButton`). |
+| 3 | `/recursos` | `Recursos` | Catálogo local de **29 registros técnicos** con buscador en tiempo real y filtrado simultáneo por categoría, ambos optimizados con `useMemo`. |
+| 4 | `/api-publica` | `ApiPublica` | Consumo asíncrono de la API abierta de **Open Library** (obras de programación/JavaScript) con renderizado condicional de estados: `loading` con skeleton, `error` con retry y fallbacks de portada. |
+| 5 | `/arbol` | `Arbol` | Visualizador jerárquico del árbol de componentes, sincronizado 1:1 con la estructura real de archivos y el flujo de datos del DOM. |
+| 6 | `/bitacora` | `Bitacora` | Registro cronológico de **14 hitos** que documentan los problemas encontrados, las alternativas evaluadas y las decisiones tomadas a lo largo del TP. |
+| 7 | `*` | `NotFound` | Manejo de rutas inexistentes con navegación de retorno al inicio. |
+
+**Stack:** Vite 8 · React 19 · React Router 7 · CSS vanilla con tokens y temas · JavaScript puro (sin TypeScript) · oxlint.
+
+### Navegación y UX
+
+- **`Layout`** envuelve todas las rutas anidadas con `Sidebar` + `Header` + `Outlet` + `Footer`.
+- **`Sidebar` persistente** de alto completo (sticky, 100 vh) con el isotipo del equipo y la navegación principal; bajo 768 px se convierte en un drawer deslizante controlado por hamburguesa y backdrop.
+- **`ScrollRestoration` automático**: en cada cambio de ruta, `useLayoutEffect` restablece el scroll del `window`, de `.app-main` y de `.sidebar` a la posición `0`, de modo que toda transición arranca arriba de todo.
+
+---
+
+## Equipo y Responsabilidades en el TP2 (Criterio 3)
+
+| Integrante | Rol | GitHub | Responsabilidades |
+| :--- | :--- | :--- | :--- |
+| Omar Dario Virili | `sysadmin` | [@odv144](https://github.com/odv144) | Configuración base de Vite/Vercel, estructura de rutas y bitácora técnica. |
+| Cristian Suárez | `kernel-dev` | [@c-suarez](https://github.com/c-suarez) | Layout con Sidebar persistente, microinteracciones del grafo y diseño de tokens CLI. |
+| Jairo Calla | `net-daemon` | [@JNCallaGiron](https://github.com/JNCallaGiron) | Consumo de la API de Open Library, manejo de estados asíncronos y skeletons. |
+| Cynthia Sotelo | `sec-ops` | [@cynthia-sotelo](https://github.com/cynthia-sotelo) | Dataset local de 29 recursos, búsqueda reactiva y filtros con `useMemo`. |
+| Analia Fernandez | `root` | [@Analia-Elizabeth-Fernandez](https://github.com/Analia-Elizabeth-Fernandez) | Modelado del árbol de componentes, auditoría de accesibilidad y documentación. |
+
+---
+
+## Avatares y Arte ASCII Nativo
+
+Para garantizar **independencia de APIs externas, rendimiento óptimo y neutralidad**, cada perfil cuenta con un emblema de sistema en **arte ASCII nativo** embebido directamente en el código fuente (`asciiArt` dentro de `src/data/team.js`). Los bloques se renderizan como elementos `<pre>` con `role="img"` y etiqueta accesible, sin solicitudes de red ni dependencias de servicios de terceros. Cada emblema refleja la identidad técnica de su integrante: un servidor rack, un CPU/kernel, un nodo de red, un candado de seguridad y una shell root.
+
+---
+
+## Declaración de Uso de Asistencia con Inteligencia Artificial (Criterio 15)
+
+| Integrante | Rol | Herramienta / Entorno | Modelo específico | Tareas puntuales asistidas |
+| :--- | :--- | :--- | :--- | :--- |
+| Cristian Suárez | kernel-dev | OpenCode CLI + Terminal | Claude 3.7 Sonnet | Refactorización de layout a Sidebar persistente, microinteracciones SVG en el grafo y diseño de tokens CLI. |
+| Omar Dario Virili | sysadmin | GitHub Copilot en VS Code | GPT-4o | Configuración de Vite/Vercel, scaffolding de rutas y estructura cronológica de la bitácora. |
+| Jairo Calla | net-daemon | ChatGPT Web | GPT-4o | Lógica de consumo asíncrono para Open Library, manejo de skeletons y reintentos. |
+| Cynthia Sotelo | sec-ops | Claude Web | Claude 3.5 Sonnet | Normalización del dataset local de 29 recursos y optimización de filtros con `useMemo`. |
+| Analia Fernandez | root | Gemini Web | Gemini 2.5 Flash | Mapeo jerárquico del árbol de componentes (`Arbol.jsx`), contraste WCAG y documentación. |
+
+---
+
+## Instalación y Ejecución Local
 
 ```bash
-cd front-tp1-react
+# 1. Clonar e instalar dependencias
+git clone https://github.com/odv144/front-tp2.git
+cd front-tp2
 npm install
+
+# 2. Desarrollo (http://localhost:5173)
 npm run dev
-```
 
-Abrí `http://localhost:5173`.
+# 3. Lint (oxlint, sin advertencias)
+npm run lint
 
-## Build y deploy en Vercel
-
-```bash
+# 4. Build de producción (dist/)
 npm run build
 ```
 
-El proyecto ya incluye `vercel.json` con rewrites para SPA (React Router).
-
-1. Subí el repo a GitHub.
-2. En Vercel → New Project → importá el repo.
-3. Framework Preset: **Vite**.
-4. Deploy.
-
-O con CLI:
-
-```bash
-npx vercel
-```
-
-## Funcionalidades migradas
-
-- ✅ Grafo de nodos SVG interactivo (hover, focus, teclado, tooltip)
-- ✅ Listado de equipo dinámico
-- ✅ Perfiles dinámicos por `/perfil/:id`
-- ✅ Barras de habilidad animadas
-- ✅ Botón “Dato curioso”
-- ✅ Tema claro/oscuro (persistente en `localStorage`)
-- ✅ Menú móvil
-- ✅ Bitácora / timeline
-- ✅ Responsive (1200 / 900 / 400 px)
-- ✅ Accesibilidad básica (ARIA, focus visible, teclado)
-
-## Integrantes
-
-| Nombre              | GitHub                                      |
-|---------------------|---------------------------------------------|
-| Omar Dario Virili   | https://github.com/odv144                   |
-| Jairo Calla         | https://github.com/JNCallaGiron             |
-| Cristian Suárez     | https://github.com/c-suarez                 |
-| Cynthia Sotelo      | https://github.com/cynthia-sotelo           |
-| Analía Fernandez    | https://github.com/Analia-Elizabeth-Fernandez |
+El deploy en Vercel está preparado mediante `vercel.json` con rewrites para SPA, de modo que cualquier ruta profunda (`/perfil/1`, `/recursos`, etc.) resuelve correctamente al recargar.

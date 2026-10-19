@@ -11,7 +11,7 @@ export default function FunFactButton({ facts }) {
 
   return (
     <div className="factcard">
-      <p className="eyebrow">Dato curioso</p>
+      <p className="eyebrow">echo &quot;dato curioso&quot;</p>
       <p id="fact-text" aria-live="polite" style={{ marginTop: 8 }}>
         {facts[index]}
       </p>
