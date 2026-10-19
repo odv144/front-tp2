@@ -1,8 +1,3 @@
-/**
- * Fuente única de verdad para la información de las personas integrantes del equipo.
- * Todas las páginas leen de este array.
- */
-
 export const TEAM = [
   {
     id: 1,
@@ -12,7 +7,9 @@ export const TEAM = [
     age: 42,
     github: "https://github.com/odv144",
     initials: "OV",
-    accent: "#2B2F77",
+    asciiArt:
+      "+---------+\n| [o] [o] |\n| ======= |\n| [===]   |\n+---------+",
+    sysTag: "sysadmin",
     bio: "Apasionado por la electrónica y el desarrollo web, facinado por la robótica y la Inteligencia Artificial.",
     skills: [
       { name: "HTML5 & CSS3", level: 92 },
@@ -41,7 +38,9 @@ export const TEAM = [
     age: 35,
     github: "https://github.com/c-suarez",
     initials: "CS",
-    accent: "#E53935",
+    asciiArt:
+      "  | | | |  \n+-+-+-+-+-+\n| >_ CPU  |\n|  KERNEL |\n+-+-+-+-+-+\n  | | | |  ",
+    sysTag: "kernel-dev",
     bio: "Desarrollador Fullstack apasionado por crear soluciones eficientes. Disfruto de los buenos desafíos técnicos.",
     skills: [
       { name: "HTML & CSS", level: 90 },
@@ -69,7 +68,9 @@ export const TEAM = [
     age: 33,
     github: "https://github.com/JNCallaGiron",
     initials: "JC",
-    accent: "#B24C1F",
+    asciiArt:
+      "   ( o )   \n   / | \\   \n (o)-+-(o) \n   \\ | /   \n   ( o )   ",
+    sysTag: "net-daemon",
     bio: "Cree que cualquier diseño, por imposible que parezca, se puede maquetar de forma limpia con Grid y Flexbox. Enemigo número uno del uso injustificado de '!important'.",
     skills: [
       { name: "CSS3 & SASS", level: 95 },
@@ -97,7 +98,9 @@ export const TEAM = [
     age: 46,
     github: "https://github.com/cynthia-sotelo",
     initials: "CS",
-    accent: "#6B3FA0",
+    asciiArt:
+      "   .---.   \n  /     \\  \n |   _   | \n |  (_)  | \n +-------+ ",
+    sysTag: "sec-ops",
     bio: "Especialista en QA & Testing. Pongo a prueba el código para garantizar un software estable y confiable.",
     skills: [
       { name: "Cypress & Selenium", level: 85 },
@@ -125,7 +128,9 @@ export const TEAM = [
     age: 33,
     github: "https://github.com/Analia-Elizabeth-Fernandez",
     initials: "AF",
-    accent: "#0d6ea7",
+    asciiArt:
+      ".---------.\n| # root  |\n| > echo_ |\n| [SYS]   |\n'---------'",
+    sysTag: "root",
     bio: "Organizada hasta la obsesión: si algo no está por escrito, para mí no existe. Disfruto ordenar el caos, dejar todo prolijo y que cualquiera pueda entender un proyecto con solo leer el README.",
     skills: [
       { name: "Documentación técnica (Markdown)", level: 90 },

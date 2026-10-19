@@ -1,6 +1,4 @@
-import { Link } from "react-router-dom";
-
-export default function Footer({ showBack = false }) {
+export default function Footer() {
   return (
     <footer className="site-footer">
       <div
@@ -13,12 +11,8 @@ export default function Footer({ showBack = false }) {
           width: "100%",
         }}
       >
-        <span>Equipo Nodos · TP1 Front End · 2026</span>
-        {showBack ? (
-          <Link to="/">← Volver a la portada</Link>
-        ) : (
-          <span>Hecho con React + Vite</span>
-        )}
+        <span>$ echo &quot;Equipo Nodos · TP2 Front End · 2026&quot;</span>
+        <span>exit 0 · React + Vite</span>
       </div>
     </footer>
   );
