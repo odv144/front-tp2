@@ -2,7 +2,7 @@
 
 Desarrollo de Sistemas Web · Front End · IFTS 29 · 2026
 
-**[Repositorio en GitHub](https://github.com/odv144/front-tp2)** · **[Deploy en Vercel](https://front-tp2.vercel.app/)**
+**[Repositorio en GitHub](https://github.com/odv144/front-tp2)** · **[Deploy en Vercel](https://front-tp2-omega.vercel.app/)**
 
 ---
 
