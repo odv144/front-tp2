@@ -14,17 +14,17 @@ export default function Sidebar({ abierto = false, onNavigate }) {
       <div className="sidebar-brand">
         <svg
           className="brand-mark"
-          viewBox="0 0 16 16"
+          viewBox="0 0 32 32"
           shapeRendering="crispEdges"
           aria-hidden="true"
           focusable="false"
         >
-          <rect width="16" height="16" rx="2" fill="#161b22" />
+          <rect width="32" height="32" rx="4" fill="#0b0f12" />
           <g fill="#00ff66">
-            <rect x="4" y="4" width="2" height="8" />
-            <rect x="6" y="6" width="2" height="2" />
-            <rect x="8" y="8" width="2" height="2" />
-            <rect x="10" y="4" width="2" height="8" />
+            <rect x="8" y="8" width="4" height="16" />
+            <rect x="12" y="12" width="4" height="4" />
+            <rect x="16" y="16" width="4" height="4" />
+            <rect x="20" y="8" width="4" height="16" />
           </g>
         </svg>
         <span className="sidebar-title">

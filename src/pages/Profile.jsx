@@ -43,9 +43,11 @@ export default function Profile() {
 
   return (
     <main className="container" style={{ paddingBottom: 60 }}>
-      <Link className="back-link" to="/">
-        ← Volver al equipo
-      </Link>
+      <div className="profile-back">
+        <Link className="back-link" to="/">
+          ← cd .. (volver al equipo)
+        </Link>
+      </div>
 
       <p className="eyebrow">whoami</p>
 

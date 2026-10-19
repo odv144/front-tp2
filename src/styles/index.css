@@ -442,12 +442,25 @@ html[data-theme="dark"] body::after {
   margin-top: 12px; font-size: 0.9rem; color: var(--text-muted); font-family: var(--font-mono);
 }
 .profile-bio { margin-top: 14px; color: var(--text-muted); max-width: 60ch; }
+.profile-back { margin-bottom: 1rem; }
 .back-link {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-size: 0.86rem; color: var(--text-muted); margin-bottom: 18px;
-  margin-top: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.35rem 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: color var(--transition), border-color var(--transition);
 }
-.back-link:hover { color: var(--primary); }
+.back-link:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+}
 
 .profile-grid {
   display: grid;
