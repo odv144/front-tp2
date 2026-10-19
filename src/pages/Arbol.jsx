@@ -11,34 +11,34 @@ const ARBOL = [
         tipo: "Estado",
         nota: "Guarda la ruta actual. Los rewrites de vercel.json permiten recargar (F5) en cualquier URL.",
         hijos: [
-          {
-            nombre: "Layout",
-            archivo: "src/components/Layout.jsx",
-            tipo: "Layout",
-            nota: "Esqueleto compartido por todas las rutas anidadas.",
-            hijos: [
               {
-                nombre: "Header",
-                archivo: "src/components/Header.jsx",
-                tipo: "Componente UI",
-                nota: "Marca del sitio + toggle de tema (useTheme). Sin menú: la navegación vive en el Sidebar.",
-                hijos: [],
-              },
-              {
-                nombre: "Sidebar",
-                archivo: "src/components/Sidebar.jsx",
-                tipo: "Componente UI",
-                nota: "Identidad 'Nodos · Front End', 5 NavLink con clase .active y estado isOpen para el menú móvil (.mobile-toggle).",
-                hijos: [],
-              },
-              {
-                nombre: ".app-main (div)",
-                archivo: "contenedor principal",
+                nombre: "Layout",
+                archivo: "src/components/Layout.jsx",
                 tipo: "Layout",
-                nota: "Área derecha del grid: vista activa + pie.",
+                nota: "Esqueleto compartido por todas las rutas anidadas. Guarda el estado del menú móvil (menuAbierto) y lo baja por props al Sidebar, al Header y al backdrop.",
                 hijos: [
                   {
-                    nombre: "Outlet",
+                    nombre: "Sidebar",
+                    archivo: "src/components/Sidebar.jsx",
+                    tipo: "Componente UI",
+                    nota: "Panel lateral fijo (sticky, 100vh) con identidad 'Nodos · Front End' y 5 NavLink con clase .active. Recibe abierto/onNavigate del Layout; en móvil se desliza desde la izquierda (clase .open).",
+                    hijos: [],
+                  },
+                  {
+                    nombre: ".app-main (div)",
+                    archivo: "contenedor principal",
+                    tipo: "Layout",
+                    nota: "Área de contenido del flex: Header + vista activa + pie. En móvil compensa la barra fija con padding-top.",
+                    hijos: [
+                      {
+                        nombre: "Header",
+                        archivo: "src/components/Header.jsx",
+                        tipo: "Componente UI",
+                        nota: "Solo acciones: hamburguesa .mobile-toggle en móvil (aria-controls='sidebar-nav') y toggle de tema (useTheme). Sin marca: la identidad vive en el Sidebar.",
+                        hijos: [],
+                      },
+                      {
+                        nombre: "Outlet",
                     archivo: "react-router-dom",
                     tipo: "Estado",
                     nota: "Monta el hijo de la ruta activa definida en App.jsx.",
@@ -210,6 +210,13 @@ const ARBOL = [
                   },
                 ],
               },
+              {
+                nombre: ".sidebar-backdrop",
+                archivo: "contenedor de Layout (render condicional)",
+                tipo: "Componente UI",
+                nota: "Botón de fondo que cierra el menú móvil al hacer clic. Solo existe en el DOM cuando menuAbierto es true y solo se dibuja bajo 768px (display: none en escritorio).",
+                hijos: [],
+              },
             ],
           },
         ],
@@ -292,7 +299,7 @@ export default function Arbol() {
               <li>
                 <strong>Estado local:</strong> cada componente que necesita
                 reaccionar a la interacción guarda su estado con{" "}
-                <code>useState</code> (<code>isOpen</code> en Sidebar,{" "}
+                <code>useState</code> (<code>menuAbierto</code> en Layout,{" "}
                 <code>busqueda</code>/<code>categoria</code> en Recursos,{" "}
                 <code>data</code>/<code>loading</code>/<code>error</code> en
                 ApiPublica). No hay estado global.

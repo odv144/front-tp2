@@ -1,16 +1,21 @@
-import { NavLink } from "react-router-dom";
 import { useTheme } from "../hooks/useTheme";
 
-export default function Header() {
+export default function Header({ menuAbierto = false, onToggleMenu }) {
   const { theme, toggleTheme } = useTheme();
 
   return (
     <header className="site-header">
       <nav className="nav">
-        <NavLink to="/" className="brand">
-          <span className="brand-mark">N</span>
-          <span className="brand-text">Equipo Nodos</span>
-        </NavLink>
+        <button
+          className="mobile-toggle"
+          type="button"
+          aria-label={menuAbierto ? "Cerrar menú" : "Abrir menú"}
+          aria-expanded={menuAbierto}
+          aria-controls="sidebar-nav"
+          onClick={onToggleMenu}
+        >
+          ☰
+        </button>
 
         <div className="nav-actions">
           <button
