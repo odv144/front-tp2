@@ -9,9 +9,11 @@ export default function Bitacora() {
             <span className="eyebrow">Proceso</span>
             <h2>Bitácora de desarrollo</h2>
             <p>
-              Decisiones, obstáculos y cambios de rumbo durante el TP1, en orden
-              cronológico. La idea es que se pueda reconstruir cómo trabajamos sin
-              tener que buscar información dispersa en el repositorio.
+              Decisiones, obstáculos y cambios de rumbo del equipo, en orden
+              cronológico: desde la entrega del TP1 hasta el avance continuo
+              hacia el TP2 con React. La idea es que se pueda reconstruir cómo
+              trabajamos sin tener que buscar información dispersa en el
+              repositorio.
             </p>
           </div>
           <Timeline />

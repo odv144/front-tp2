@@ -1,24 +1,128 @@
+import { useMemo, useState } from "react";
+import recursos from "../data/recursos.json";
+
+function nivelClass(nivel) {
+  if (nivel === "Diario") return "badge-nivel nivel-diario";
+  if (nivel === "Ocasional") return "badge-nivel nivel-ocasional";
+  return "badge-nivel nivel-exploracion";
+}
+
 export default function Recursos() {
+  const [busqueda, setBusqueda] = useState("");
+  const [categoria, setCategoria] = useState("Todas");
+
+  const categorias = useMemo(
+    () => ["Todas", ...new Set(recursos.map((recurso) => recurso.categoria))],
+    []
+  );
+
+  const resultados = useMemo(() => {
+    const termino = busqueda.trim().toLowerCase();
+    return recursos.filter((recurso) => {
+      const porCategoria =
+        categoria === "Todas" || recurso.categoria === categoria;
+      const porTexto =
+        termino === "" ||
+        recurso.nombre.toLowerCase().includes(termino) ||
+        recurso.descripcion.toLowerCase().includes(termino);
+      return porCategoria && porTexto;
+    });
+  }, [busqueda, categoria]);
+
+  const limpiarFiltros = () => {
+    setBusqueda("");
+    setCategoria("Todas");
+  };
+
   return (
     <main>
       <section className="section">
         <div className="container">
           <div className="section-head">
             <span className="eyebrow">Recursos</span>
-            <h2>Recursos del equipo</h2>
+            <h2>Stack y herramientas del equipo</h2>
             <p>
-              Esta sección todavía es un placeholder declarado en el router. Sirve
-              para verificar que la navegación del sidebar y el layout compartido
-              funcionan antes de cargar el contenido real.
+              {recursos.length} recursos del ecosistema frontend, estilos, testing
+              y devops que usamos a diario o estamos explorando. Buscá por nombre
+              o descripción y filtrá por categoría: el listado se actualiza al
+              instante.
             </p>
           </div>
-          <div className="card stub-card">
-            <h3>🚧 En construcción</h3>
-            <p className="stub-text">
-              Acá van a vivir los enlaces, archivos y material de apoyo del
-              proyecto. La ruta ya está dada de alta en <code>App.jsx</code>.
+
+          <div className="resource-filters">
+            <div className="field field-grow">
+              <label className="field-label" htmlFor="busqueda-recursos">
+                Búsqueda libre
+              </label>
+              <input
+                id="busqueda-recursos"
+                className="resource-search"
+                type="search"
+                placeholder="Ej: react, linter, despliegue…"
+                value={busqueda}
+                onChange={(event) => setBusqueda(event.target.value)}
+              />
+            </div>
+
+            <div className="field">
+              <label className="field-label" htmlFor="categoria-recursos">
+                Categoría
+              </label>
+              <select
+                id="categoria-recursos"
+                className="resource-select"
+                value={categoria}
+                onChange={(event) => setCategoria(event.target.value)}
+              >
+                {categorias.map((opcion) => (
+                  <option key={opcion} value={opcion}>
+                    {opcion === "Todas" ? "Todas" : opcion}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <p className="resource-count" role="status" aria-live="polite">
+              Mostrando {resultados.length} de {recursos.length} recursos
             </p>
           </div>
+
+          {resultados.length === 0 ? (
+            <div className="empty-state">
+              <h3>No se encontraron recursos que coincidan</h3>
+              <p>
+                Probá con otro término de búsqueda o volvé a seleccionar todas
+                las categorías.
+              </p>
+              <button className="btn btn-ghost" type="button" onClick={limpiarFiltros}>
+                Limpiar filtros
+              </button>
+            </div>
+          ) : (
+            <div className="resource-grid">
+              {resultados.map((recurso) => (
+                <article className="card resource-card" key={recurso.id}>
+                  <div className="resource-card-head">
+                    <span className="badge badge-categoria">{recurso.categoria}</span>
+                    <span className={nivelClass(recurso.nivelUso)}>
+                      {recurso.nivelUso}
+                    </span>
+                  </div>
+                  <h3>{recurso.nombre}</h3>
+                  <p className="resource-desc">{recurso.descripcion}</p>
+                  <a
+                    className="resource-link"
+                    href={recurso.url}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Visitar sitio
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                </article>
+              ))}
+            </div>
+          )}
         </div>
       </section>
     </main>
