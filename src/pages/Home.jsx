@@ -8,7 +8,7 @@ export default function Home() {
       <section className="hero">
         <div className="container hero-grid">
           <div>
-            <span className="eyebrow">TP1 · Desarrollo de Sistemas Web</span>
+            <span className="eyebrow">TP2 · Proyecto React en equipo</span>
             <h1 className="hero-title">
               Somos <span className="accent-word">Nodos</span>:
               <br />

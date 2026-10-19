@@ -64,4 +64,10 @@ export const TIMELINE = [
     body: "Incorporamos un dataset JSON con los recursos técnicos del equipo y la vista de Recursos, con búsqueda por texto libre y filtro por categoría que se aplican al mismo tiempo. Las categorías únicas se derivan de los propios datos y el listado se recalcula con useMemo solo cuando cambian los filtros; además incluye contador de resultados y estado vacío.",
     tags: ["Integración"],
   },
+  {
+    date: "Semana 6 · Integración (TP2)",
+    title: "Integración de API pública y documentación del árbol de renderizado",
+    body: "Conectamos REST Countries desde el navegador para traer los países de América sin exponer claves en el cliente, con control explícito de los estados de carga, error y éxito (incluido el reintento manual) y un bloque visible en la interfaz que explica qué datos aporta la API. En paralelo modelamos el Virtual DOM de la aplicación en una vista de árbol de renderizado, alineando la arquitectura real (Layout con Header y Sidebar compartida, componentes de tarjeta y de entrada extraídos) con el esquema documentado.",
+    tags: ["Integración", "Decisión"],
+  },
 ];

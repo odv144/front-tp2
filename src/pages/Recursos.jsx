@@ -1,11 +1,6 @@
 import { useMemo, useState } from "react";
 import recursos from "../data/recursos.json";
-
-function nivelClass(nivel) {
-  if (nivel === "Diario") return "badge-nivel nivel-diario";
-  if (nivel === "Ocasional") return "badge-nivel nivel-ocasional";
-  return "badge-nivel nivel-exploracion";
-}
+import ResourceGrid from "../components/ResourceGrid";
 
 export default function Recursos() {
   const [busqueda, setBusqueda] = useState("");
@@ -76,7 +71,7 @@ export default function Recursos() {
               >
                 {categorias.map((opcion) => (
                   <option key={opcion} value={opcion}>
-                    {opcion === "Todas" ? "Todas" : opcion}
+                    {opcion}
                   </option>
                 ))}
               </select>
@@ -99,29 +94,7 @@ export default function Recursos() {
               </button>
             </div>
           ) : (
-            <div className="resource-grid">
-              {resultados.map((recurso) => (
-                <article className="card resource-card" key={recurso.id}>
-                  <div className="resource-card-head">
-                    <span className="badge badge-categoria">{recurso.categoria}</span>
-                    <span className={nivelClass(recurso.nivelUso)}>
-                      {recurso.nivelUso}
-                    </span>
-                  </div>
-                  <h3>{recurso.nombre}</h3>
-                  <p className="resource-desc">{recurso.descripcion}</p>
-                  <a
-                    className="resource-link"
-                    href={recurso.url}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Visitar sitio
-                    <span aria-hidden="true">↗</span>
-                  </a>
-                </article>
-              ))}
-            </div>
+            <ResourceGrid recursos={resultados} />
           )}
         </div>
       </section>
