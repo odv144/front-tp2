@@ -1,10 +1,10 @@
 import ApiCard from "./ApiCard";
 
-export default function ApiGrid({ countries }) {
+export default function ApiGrid({ obras }) {
   return (
     <div className="api-grid">
-      {countries.map((country) => (
-        <ApiCard key={country.cca3} country={country} />
+      {obras.map((obra) => (
+        <ApiCard key={obra.id} obra={obra} />
       ))}
     </div>
   );

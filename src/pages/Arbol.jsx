@@ -136,7 +136,7 @@ const ARBOL = [
                         nombre: "ApiPublica",
                         archivo: "src/pages/ApiPublica.jsx",
                         tipo: "Página",
-                        nota: "Ruta /api-publica; useEffect + fetch con try/catch/finally.",
+                        nota: "Ruta /api-publica; useEffect + fetch a Open Library con try/catch/finally.",
                         hijos: [
                           {
                             nombre: "Bloque explicativo",
@@ -156,13 +156,13 @@ const ARBOL = [
                             nombre: "ApiGrid",
                             archivo: "src/components/ApiGrid.jsx",
                             tipo: "Componente UI",
-                            nota: "Prop countries (respuesta ya resuelta).",
+                            nota: "Prop obras (respuesta de data.works ya normalizada).",
                             hijos: [
                               {
                                 nombre: "ApiCard",
                                 archivo: "src/components/ApiCard.jsx",
                                 tipo: "Componente UI",
-                                nota: "Prop country; bandera, capital y población en es-AR.",
+                                nota: "Prop obra; portada (o placeholder), título, autor y año de edición.",
                                 hijos: [],
                               },
                             ],

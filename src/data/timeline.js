@@ -67,7 +67,7 @@ export const TIMELINE = [
   {
     date: "Semana 6 · Integración (TP2)",
     title: "Integración de API pública y documentación del árbol de renderizado",
-    body: "Conectamos REST Countries desde el navegador para traer los países de América sin exponer claves en el cliente, con control explícito de los estados de carga, error y éxito (incluido el reintento manual) y un bloque visible en la interfaz que explica qué datos aporta la API. En paralelo modelamos el Virtual DOM de la aplicación en una vista de árbol de renderizado, alineando la arquitectura real (Layout con Header y Sidebar compartida, componentes de tarjeta y de entrada extraídos) con el esquema documentado.",
+    body: "La primera versión de esta vista consumía REST Countries, pero la petición fallaba de forma repetida desde el navegador. Lo registramos como problema y lo solucionamos reemplazando el endpoint por Open Library (Internet Archive), que tiene CORS libre, no requiere claves en el cliente y aporta datos pertinentes a la carrera: obras sobre desarrollo web y JavaScript con título, autor, año y portada. Se mantiene el control explícito de los estados de carga, error y éxito (con reintento manual) y el bloque visible en la interfaz que explica qué datos aporta la API. En paralelo modelamos el Virtual DOM de la aplicación en una vista de árbol de renderizado, alineando la arquitectura real (Layout con Header y Sidebar compartida, componentes de tarjeta y de entrada extraídos) con el esquema documentado.",
     tags: ["Integración", "Decisión"],
   },
 ];

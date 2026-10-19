@@ -1,24 +1,37 @@
-export default function ApiCard({ country }) {
-  const capital = country.capital?.[0] ?? "—";
-  const poblacion = new Intl.NumberFormat("es-AR").format(country.population);
+import { useState } from "react";
+
+function iniciales(titulo) {
+  return titulo.trim().slice(0, 3).toUpperCase();
+}
+
+export default function ApiCard({ obra }) {
+  const [portadaOk, setPortadaOk] = useState(Boolean(obra.portada));
 
   return (
     <article className="card api-card">
-      <img
-        className="api-flag"
-        src={country.flags?.png ?? country.flags?.svg}
-        alt={`Bandera de ${country.name.common}`}
-        loading="lazy"
-      />
+      {portadaOk ? (
+        <img
+          className="api-cover"
+          src={obra.portada}
+          alt={`Portada de ${obra.titulo}`}
+          loading="lazy"
+          onError={() => setPortadaOk(false)}
+        />
+      ) : (
+        <div className="api-cover api-cover-placeholder" aria-hidden="true">
+          <span>{iniciales(obra.titulo)}</span>
+        </div>
+      )}
+
       <div className="api-card-body">
-        <h3>{country.name.common}</h3>
+        <h3>{obra.titulo}</h3>
         <p className="api-meta">
-          <span>Capital</span>
-          {capital}
+          <span>Autor</span>
+          {obra.autor}
         </p>
         <p className="api-meta">
-          <span>Población</span>
-          {poblacion} hab.
+          <span>Año</span>
+          {obra.anio}
         </p>
       </div>
     </article>

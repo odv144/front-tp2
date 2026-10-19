@@ -1,7 +1,7 @@
 function SkeletonCard() {
   return (
     <div className="api-card skeleton-card" aria-hidden="true">
-      <span className="skeleton-flag" />
+      <span className="skeleton-cover" />
       <span className="skeleton-line" />
       <span className="skeleton-line short" />
     </div>

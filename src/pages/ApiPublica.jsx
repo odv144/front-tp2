@@ -2,8 +2,19 @@ import { useEffect, useState } from "react";
 import StatusBox from "../components/StatusBox";
 import ApiGrid from "../components/ApiGrid";
 
-const ENDPOINT =
-  "https://restcountries.com/v3.1/region/americas?fields=name,capital,population,flags,cca3";
+const ENDPOINT = "https://openlibrary.org/subjects/javascript.json?limit=12";
+
+function normalizarObra(work) {
+  return {
+    id: work.key,
+    titulo: work.title,
+    autor: work.authors?.[0]?.name || "Autor no especificado",
+    anio: work.first_publish_year || "S/D",
+    portada: work.cover_id
+      ? `https://covers.openlibrary.org/b/id/${work.cover_id}-M.jpg`
+      : null,
+  };
+}
 
 export default function ApiPublica() {
   const [data, setData] = useState([]);
@@ -23,7 +34,10 @@ export default function ApiPublica() {
           throw new Error(`La API respondió con el estado ${respuesta.status}.`);
         }
         const json = await respuesta.json();
-        if (!cancelado) setData(json);
+        const obras = Array.isArray(json.works)
+          ? json.works.map(normalizarObra)
+          : [];
+        if (!cancelado) setData(obras);
       } catch (problema) {
         if (!cancelado) {
           setData([]);
@@ -53,10 +67,11 @@ export default function ApiPublica() {
         <div className="container">
           <div className="section-head">
             <span className="eyebrow">API Externa</span>
-            <h2>Países de América desde REST Countries</h2>
+            <h2>Obras de JavaScript desde Open Library</h2>
             <p>
               Esta vista consume una API pública desde el navegador para mostrar
-              la bandera, la capital y la población de cada país de la región.
+              una colección de libros sobre desarrollo web y JavaScript: título,
+              autor, año de edición y portada.
             </p>
           </div>
 
@@ -64,27 +79,26 @@ export default function ApiPublica() {
             <div className="api-about-item">
               <strong>Datos</strong>
               <p>
-                Por cada país: bandera (imagen), nombre común, capital y
-                población formateada en español rioplatense (es-AR).
+                Colección de obras bibliográficas sobre desarrollo web y
+                JavaScript: título, autor, año de edición y portada.
               </p>
             </div>
             <div className="api-about-item">
               <strong>Origen</strong>
               <p>
-                REST Countries v3.1, endpoint público{" "}
-                <code>/v3.1/region/americas</code> con campos acotados: no
-                requiere API key ni credenciales, así que nada sensible queda
-                expuesto en el cliente.
+                Open Library API (Internet Archive), endpoint abierto{" "}
+                <code>/subjects/javascript.json</code> sin necesidad de tokens
+                privados ni credenciales, así que nada sensible queda expuesto
+                en el cliente.
               </p>
             </div>
             <div className="api-about-item">
               <strong>Propósito</strong>
               <p>
-                Ejemplificar el ciclo de vida asíncrono en React:{" "}
-                <code>useEffect</code> + <code>fetch</code> con{" "}
-                <code>try/catch/finally</code>, estados visibles de espera (
-                <code>loading</code>) y de error (<code>error</code>), y
-                tratamiento de fallos de red con reintento manual.
+                Demostrar peticiones asíncronas en cliente con{" "}
+                <code>fetch</code> y <code>useEffect</code>, y renderizado
+                condicional de estados: <code>loading</code> con skeleton,{" "}
+                <code>error</code> controlado y reintento manual.
               </p>
             </div>
           </div>
@@ -106,8 +120,8 @@ export default function ApiPublica() {
 
           {!loading && !error && data.length === 0 && (
             <div className="empty-state">
-              <h3>La API no devolvió registros</h3>
-              <p>No hay países para mostrar en este momento.</p>
+              <h3>La API no devolvió obras</h3>
+              <p>No hay títulos para mostrar en este momento.</p>
               <button className="btn btn-ghost" type="button" onClick={reintentar}>
                 Reintentar conexión
               </button>
@@ -117,9 +131,9 @@ export default function ApiPublica() {
           {!loading && !error && data.length > 0 && (
             <>
               <p className="resource-count api-count">
-                {data.length} países recibidos desde la API
+                {data.length} obras recibidas desde la API
               </p>
-              <ApiGrid countries={data} />
+              <ApiGrid obras={data} />
             </>
           )}
         </div>
